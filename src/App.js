@@ -5,6 +5,8 @@ import EditUser from "./components/Users/EditUser";
 const App = () => {
   const [data, setData] = useState([]);
   const [id, setId] = useState(0);
+  const [toggle, setToggle] = useState("");
+
   const getData = () => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
@@ -17,13 +19,13 @@ const App = () => {
     getData();
   }, []);
   if (id > 0) {
-    return <EditUser id={id} setId={setId} />;
+    return <EditUser id={id} setId={setId} toggle={toggle} />;
   }
   return (
     <div>
       {/* {id > 0 && <EditUser id={id} />} */}
 
-      <Users data={data} setId={setId} />
+      <Users data={data} setId={setId} setToggle={setToggle}/>
     </div>
   );
 };

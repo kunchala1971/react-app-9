@@ -1,7 +1,8 @@
 import React from "react";
 
-const Users = ({ data, setId }) => {
-  const onClickHandler = (id) => {
+const Users = ({ data, setId,setToggle }) => {
+  const onClickHandler = (id,toggle) => {
+    setToggle(toggle)
     setId(0);
     setId(id);
   };
@@ -24,11 +25,11 @@ const Users = ({ data, setId }) => {
               <td>
                 <button
                   className="btn btn-primary me-1"
-                  onClick={() => onClickHandler(element.id)}
+                  onClick={() => onClickHandler(element.id,"Edit")}
                 >
                   Edit
                 </button>
-                <button className="btn btn-danger ms-1">Delete</button>
+                <button className="btn btn-danger ms-1"  onClick={() => onClickHandler(element.id,"Delete")}>Delete</button>
               </td>
             </tr>
           ))}
